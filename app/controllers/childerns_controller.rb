@@ -10,6 +10,7 @@ class ChildernsController < ApplicationController
   # GET /childerns/1
   # GET /childerns/1.json
   def show
+    @childern.get_by_day_info
   end
 
   # GET /childerns/new

@@ -4,7 +4,12 @@ class FoodActivitiesController < ApplicationController
   # GET /food_activities
   # GET /food_activities.json
   def index
-    @food_activities = FoodActivity.all
+
+    if params[:child]
+      @food_activities = FoodActivity.where(childern_id:params[:child], created_at:"#{params[:day]} 00:00:00").page params[:page]
+    else
+      @food_activities = FoodActivity.page params[:page]
+    end
   end
 
   # GET /food_activities/1

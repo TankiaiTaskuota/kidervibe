@@ -2,6 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+
+<%= page_entries_info @app_days %>
+<br>
+<%= paginate @app_days %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,7 +25,7 @@
     <% @app_days.each do |app_day| %>
       <tr>
         <td><%= link_to app_day.id, app_day_path(app_day) %></td>
-        <td><%= app_day.childern_id %></td>
+        <td><%= nice_child_link(app_day.childern) %></td>
         <td><%= app_day.comment %></td>
         <td><%= app_day.thema %></td>
         <td><%= app_day.outdoors %></td>

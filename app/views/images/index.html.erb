@@ -2,6 +2,9 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= page_entries_info @images %>
+<br>
+<%= paginate @images %>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,7 +23,7 @@
     <% @images.each do |image| %>
       <tr>
         <td><%= link_to image.id, image_path(image) %></td>
-        <td><%= image.childern_id %></td>
+        <td><%= nice_child_link(image.childern) %></td>
         <td><%= image.comment %></td>
         <td><%= image.app_id %></td>
         <td><%= image.image_url %></td>

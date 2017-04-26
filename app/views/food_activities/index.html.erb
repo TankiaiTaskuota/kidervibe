@@ -2,6 +2,10 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= page_entries_info @food_activities %>
+<br>
+<%= paginate @food_activities %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -18,8 +22,8 @@
     <% @food_activities.each do |food_activity| %>
       <tr>
         <td><%= link_to food_activity.id, food_activity_path(food_activity) %></td>
-        <td><%= food_activity.childern_id %></td>
-        <td><%= food_activity.food_id %></td>
+        <td><%= nice_child_link(food_activity.childern) %></td>
+        <td><%= food_activity.food.name if food_activity.food %></td>
         <td><%= food_activity.food_type %></td>
         <td><%= food_activity.percentage %></td>
         <td><%=l food_activity.created_at %></td>

@@ -4,12 +4,13 @@ class AppDaysController < ApplicationController
   # GET /app_days
   # GET /app_days.json
   def index
-    @app_days = AppDay.all
+    @app_days = AppDay.order(:created_at=>'desc').page params[:page]
   end
 
   # GET /app_days/1
   # GET /app_days/1.json
   def show
+    @images = Image.where(childern_id:@app_day.childern_id, created_at:@app_day.created_at).all
   end
 
   # GET /app_days/new
