@@ -1,0 +1,55 @@
+<%= form_for @food_activity, :html => { :class => "form-horizontal food_activity" } do |f| %>
+
+  <% if @food_activity.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@food_activity.errors.count, "error") %> prohibited this food_activity from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @food_activity.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :childern_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :childern_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:childern_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :food_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :food_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:food_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :food_type, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :food_type, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:food_type) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :percentage, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :percentage, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:percentage) %>
+  </div>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                food_activities_path, :class => 'btn btn-default' %>
+    </div>
+  </div>
+
+<% end %>

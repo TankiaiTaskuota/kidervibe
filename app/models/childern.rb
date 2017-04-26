@@ -1,0 +1,2 @@
+class Childern < ApplicationRecord
+end

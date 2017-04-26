@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  childern: one
+  food: one
+  food_type: 1
+  percentage: 1.5
+
+two:
+  childern: two
+  food: two
+  food_type: 1
+  percentage: 1.5
