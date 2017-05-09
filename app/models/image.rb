@@ -1,6 +1,6 @@
 class Image < ApplicationRecord
   belongs_to :childern
-  before_create :save_image_from_url
+  after_create :save_image_from_url
 
   def save_image_from_url(url=self.image_url)
     if !url.blank?

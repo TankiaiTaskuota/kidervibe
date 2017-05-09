@@ -10,6 +10,7 @@ class AppDaysController < ApplicationController
   # GET /app_days/1
   # GET /app_days/1.json
   def show
+   # @app_day.childern.get_by_day_info(@app_day.created_at.to_date)
     @images = Image.where(childern_id:@app_day.childern_id, created_at:@app_day.created_at).all
   end
 
