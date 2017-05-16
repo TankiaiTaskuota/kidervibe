@@ -4,7 +4,7 @@ class ChildernsController < ApplicationController
   # GET /childerns
   # GET /childerns.json
   def index
-    @childerns = Childern.all
+    @childerns = Childern.page params[:page]
   end
 
   # GET /childerns/1

@@ -20,27 +20,26 @@ class Post < ApplicationRecord
     request["Accept"] = "*/*"
 
     response = http.request(request)
+
     parsed_response = JSON.parse(response.body)
-    #Rails.logger.info parsed_response['results'].to_yaml
     parsed_response['results'].each { |r|
-      post = Post.where(app_id: r['id']).first
-      if !post
 
-        uri2 = URI.parse("http://kindervibe.com/api/posts/get/?thread_id=#{r['id']}")
-        http2 = Net::HTTP.new(uri2.host, uri2.port)
 
-        request2 = Net::HTTP::Get.new(uri2.request_uri)
-        request2["Authorization"] = " Token #{SUPER_SECRET_TOKEN}"
-        request["Accept"] = "*/*"
+      uri2 = URI.parse("http://kindervibe.com/api/posts/get/?thread_id=#{r['id']}")
+      http2 = Net::HTTP.new(uri2.host, uri2.port)
 
-        response2 = http2.request(request2)
-        mesages = JSON.parse(response2.body)
-        mesages.each { |p|
-          Post.create(app_id: r['id'], :created_at => p['created_at'], :attachment_url => p['attachment'], :info => p['body'])
-        }
+      request2 = Net::HTTP::Get.new(uri2.request_uri)
+      request2["Authorization"] = " Token #{SUPER_SECRET_TOKEN}"
+      request["Accept"] = "*/*"
 
-      end
-
+      response2 = http2.request(request2)
+      mesages = JSON.parse(response2.body)
+      mesages.each { |p|
+        post = Post.where(post_app_id: p['id']).first
+        if !post
+          Post.create(thread_app_id: r['id'], post_app_id: p['id'], :created_at => p['created_at'], :attachment_url => p['attachment'], :info => p['body'], sender_name: p['sender_name'], sender_app_id: p['sender'])
+        end
+      }
     }
     if !parsed_response['next'].blank?
       Post.get_info(parsed_response['next'])

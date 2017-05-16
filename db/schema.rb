@@ -71,9 +71,12 @@ ActiveRecord::Schema.define(version: 20170428155425) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "app_id"
+    t.integer "thread_app_id"
+    t.integer "post_app_id"
     t.string "attachment_url"
     t.text "info"
+    t.string "sender_name"
+    t.integer "sender_app_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

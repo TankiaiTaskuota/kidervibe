@@ -4,12 +4,18 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:app_id) %>:</strong></dt>
-  <dd><%= @post.app_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:thread_app_id) %>:</strong></dt>
+  <dd><%= @post.thread_app_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:post_app_id) %>:</strong></dt>
+  <dd><%= @post.post_app_id %></dd>
   <dt><strong><%= model_class.human_attribute_name(:attachment_url) %>:</strong></dt>
   <dd><%= @post.attachment_url %></dd>
   <dt><strong><%= model_class.human_attribute_name(:info) %>:</strong></dt>
   <dd><%= @post.info %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sender_name) %>:</strong></dt>
+  <dd><%= @post.sender_name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:sender_app_id) %>:</strong></dt>
+  <dd><%= @post.sender_app_id %></dd>
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),

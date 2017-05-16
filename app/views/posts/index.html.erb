@@ -2,13 +2,19 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
+<%= page_entries_info @posts %>
+<br>
+<%= paginate @posts %>
 <table class="table table-striped">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:app_id) %></th>
+      <th><%= model_class.human_attribute_name(:thread_app_id) %></th>
+      <th><%= model_class.human_attribute_name(:post_app_id) %></th>
       <th><%= model_class.human_attribute_name(:attachment_url) %></th>
       <th><%= model_class.human_attribute_name(:info) %></th>
+      <th><%= model_class.human_attribute_name(:sender_name) %></th>
+      <th><%= model_class.human_attribute_name(:sender_app_id) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -17,9 +23,12 @@
     <% @posts.each do |post| %>
       <tr>
         <td><%= link_to post.id, post_path(post) %></td>
-        <td><%= post.app_id %></td>
+        <td><%= post.thread_app_id %></td>
+        <td><%= post.post_app_id %></td>
         <td><%= post.attachment_url %></td>
         <td><%= post.info %></td>
+        <td><%= post.sender_name %></td>
+        <td><%= post.sender_app_id %></td>
         <td><%=l post.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
