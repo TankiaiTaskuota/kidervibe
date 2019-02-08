@@ -33,6 +33,9 @@ gem "font-awesome-rails"
 gem 'kaminari'
 gem 'bootstrap_sb_admin_base_v2'
 
+gem "rubyzip", ">= 1.2.2"
+gem "ffi", ">= 1.9.24"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
