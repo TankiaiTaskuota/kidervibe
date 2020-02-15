@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple Ruby On Rails app, that catches information from server and show data nicley.
 
-Things you may want to cover:
+# Setup
 
-* Ruby version
+Need to define SUPER_SECRET_TOKEN in env file.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+SUPER_SECRET_TOKEN is your authentication token provider by kindervibe.
