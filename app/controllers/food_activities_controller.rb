@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class FoodActivitiesController < ApplicationController
-  before_action :set_food_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_food_activity, only: %i[show edit update destroy]
 
   # GET /food_activities
   # GET /food_activities.json
   def index
-
     if params[:child]
       @food_activities = FoodActivity.where(childern_id:params[:child], created_at:"#{params[:day]} 00:00:00").page params[:page]
     else
@@ -14,8 +15,7 @@ class FoodActivitiesController < ApplicationController
 
   # GET /food_activities/1
   # GET /food_activities/1.json
-  def show
-  end
+  def show; end
 
   # GET /food_activities/new
   def new
@@ -23,8 +23,7 @@ class FoodActivitiesController < ApplicationController
   end
 
   # GET /food_activities/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /food_activities
   # POST /food_activities.json
@@ -67,13 +66,13 @@ class FoodActivitiesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_food_activity
-      @food_activity = FoodActivity.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def food_activity_params
-      params.require(:food_activity).permit(:childern_id, :food_id, :food_type, :percentage)
-    end
+  def set_food_activity
+    @food_activity = FoodActivity.find(params[:id])
+  end
+
+  def food_activity_params
+    params.require(:food_activity).permit(:childern_id, :food_id, :food_type,
+                                          :percentage)
+  end
 end

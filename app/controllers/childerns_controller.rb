@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ChildernsController < ApplicationController
-  before_action :set_childern, only: [:show, :edit, :update, :destroy]
+  before_action :set_childern, only: %i[show edit update destroy]
 
   # GET /childerns
   # GET /childerns.json
@@ -19,8 +21,7 @@ class ChildernsController < ApplicationController
   end
 
   # GET /childerns/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /childerns
   # POST /childerns.json
@@ -63,13 +64,12 @@ class ChildernsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_childern
-      @childern = Childern.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def childern_params
-      params.require(:childern).permit(:name, :app_id)
-    end
+  def set_childern
+    @childern = Childern.find(params[:id])
+  end
+
+  def childern_params
+    params.require(:childern).permit(:name, :app_id)
+  end
 end

@@ -1,9 +1,9 @@
-class Childern < ApplicationRecord
+# frozen_string_literal: true
 
+class Childern < ApplicationRecord
   has_many :app_days
   has_many :food_activities
   has_many :images
-
 
   def get_by_day_info(day=Date.today)
     require "net/http"
@@ -44,7 +44,6 @@ class Childern < ApplicationRecord
           food_activity.food_type = Food.nice_types(f['type_id'])
           food_activity.save
         end
-
       }
 
       parsed_response['photos'].each { |photo|
@@ -54,9 +53,5 @@ class Childern < ApplicationRecord
         end
       }
     end
-
-
   end
-
-
 end
