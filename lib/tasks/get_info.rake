@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 namespace :get_info do
-  desc "Download data from server"
-  task :all => :environment do
+  desc 'Download data from server'
+  task all: :environment do
     start_date = ENV['start_date'] ? Date.parse(ENV['start_date']) : Date.today
     end_date = ENV['end_date'] ? Date.parse(ENV['end_date']) : Date.today
 
@@ -13,19 +15,15 @@ namespace :get_info do
     Post.get_info
   end
 
-  task :download_images => :environment do
-    Image.where('id > 3553 and id < 3765').all.each { |i|
-      #if !i.image_url.blank? and i.image_path.blank?
+  task download_images: :environment do
+    Image.all.each do |i|
       puts "***#{Time.now} : #{i.id} => #{i.image_url}"
       i.save_image_from_url
       sleep(rand(10))
-      # end
-    }
+    end
   end
 
-
-  task :posts => :environment do
+  task posts: :environment do
     Post.get_info
   end
-
 end

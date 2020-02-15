@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   after_create :save_from_url
 
@@ -45,5 +47,4 @@ class Post < ApplicationRecord
       Post.get_info(parsed_response['next'])
     end
   end
-
 end

@@ -1,9 +1,11 @@
-require "application_system_test_case"
+# frozen_string_literal: true
+
+require 'application_system_test_case'
 
 class ChildernsTest < ApplicationSystemTestCase
-  # test "visiting the index" do
+  # test 'visiting the index' do
   #   visit childerns_url
   #
-  #   assert_selector "h1", text: "Childern"
+  #   assert_selector 'h1', text: 'Childern'
   # end
 end

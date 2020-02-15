@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 class AppDaysController < ApplicationController
-  before_action :set_app_day, only: [:show, :edit, :update, :destroy]
+  before_action :set_app_day, only: %i[show edit update destroy]
 
   # GET /app_days
   # GET /app_days.json
   def index
-    @app_days = AppDay.order(:created_at=>'desc').page params[:page]
+    @app_days = AppDay.order(created_at: 'desc').page params[:page]
   end
 
   # GET /app_days/1
   # GET /app_days/1.json
   def show
-   # @app_day.childern.get_by_day_info(@app_day.created_at.to_date)
-    @images = Image.where(childern_id:@app_day.childern_id, created_at:@app_day.created_at).all
+    @images = Image.where(childern_id: @app_day.childern_id,
+                          created_at: @app_day.created_at).all
   end
 
   # GET /app_days/new
@@ -20,8 +22,7 @@ class AppDaysController < ApplicationController
   end
 
   # GET /app_days/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /app_days
   # POST /app_days.json
@@ -64,13 +65,13 @@ class AppDaysController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_app_day
-      @app_day = AppDay.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def app_day_params
-      params.require(:app_day).permit(:childern_id, :comment, :thema, :outdoors, :sleep, :food)
-    end
+  def set_app_day
+    @app_day = AppDay.find(params[:id])
+  end
+
+  def app_day_params
+    params.require(:app_day).permit(:childern_id, :comment, :thema, :outdoors,
+                                    :sleep, :food)
+  end
 end
